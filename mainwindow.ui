@@ -203,8 +203,8 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>41</x>
-     <y>14</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
     <hint type="destinationlabel">
      <x>18</x>
@@ -212,9 +212,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionAbout_this_app</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>aboutThisApp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>141</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>calculateFutureValue()</slot>
   <slot>calculateCurrentValue()</slot>
+  <slot>aboutThisApp()</slot>
  </slots>
 </ui>

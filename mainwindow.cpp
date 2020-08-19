@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "compondcalc.h"
-#include <sstream>
-#include<iostream>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -24,6 +22,9 @@ void MainWindow::calculateFutureValue(){
     strs << futureValue;
     std::string str_futureValue = strs.str();
     ui->resultView->setText(QString::fromStdString(str_futureValue));
+}
+void MainWindow::aboutThisApp(){
+    QMessageBox::about(this,"About this app","A compound interest calculator in C++ using the qt framework");
 }
 void MainWindow::calculateCurrentValue(){
     double amount;

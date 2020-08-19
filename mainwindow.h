@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <sstream>
+#include<iostream>
+#include<QMessageBox>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -17,6 +19,7 @@ public:
 public slots:
     void calculateCurrentValue();
     void calculateFutureValue();
+    void aboutThisApp();
 private:
     Ui::MainWindow *ui;
 };
