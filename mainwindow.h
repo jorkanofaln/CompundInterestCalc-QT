@@ -19,6 +19,7 @@ public:
 public slots:
     void calculateCurrentValue();
     void calculateFutureValue();
+    void clearFields();
     void aboutThisApp();
 private:
     Ui::MainWindow *ui;
