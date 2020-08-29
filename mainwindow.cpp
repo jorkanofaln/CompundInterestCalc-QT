@@ -20,16 +20,14 @@ void MainWindow::calculateFutureValue(){
     //Converting and Displaying result
     std::ostringstream streamFutureValue;
     streamFutureValue << futureValue;
-    std::string str_futureValue = streamFutureValue.str();
-    ui->resultView->setText(QString::fromStdString(str_futureValue));
+    std::string str_futureValue = "The price with sales tax is " + streamFutureValue.str();
+    QMessageBox::information(this,tr("Result"), tr(str_futureValue.c_str()));
 }
 void MainWindow::clearFields(){
     //Clear input fields
     ui->lineEditTime->clear();
     ui->lineEditAmount->clear();
     ui->lineEditInterest->clear();
-    //Clear result field
-    ui->resultView->clear();
 }
 void MainWindow::aboutThisApp(){
     QMessageBox::about(this,"About this app","A compound interest calculator in C++ using the qt framework");
@@ -47,8 +45,8 @@ void MainWindow::calculateCurrentValue(){
     //Converting and Displaying result
     std::ostringstream streamPresentValue;
     streamPresentValue << presentValue;
-    std::string str_presentValue = streamPresentValue.str();
-    ui->resultView->setText(QString::fromStdString(str_presentValue));
+    std::string str_presentValue = "The price with sales tax is " + streamPresentValue.str();
+    QMessageBox::information(this,tr("Result"), tr(str_presentValue.c_str()));
 }
 MainWindow::~MainWindow()
 {
