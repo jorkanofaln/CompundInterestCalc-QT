@@ -20,7 +20,7 @@ void MainWindow::calculateFutureValue(){
     //Converting and Displaying result
     std::ostringstream streamFutureValue;
     streamFutureValue << futureValue;
-    std::string str_futureValue = "The price with sales tax is " + streamFutureValue.str();
+    std::string str_futureValue = "The future value is " + streamFutureValue.str();
     QMessageBox::information(this,tr("Result"), tr(str_futureValue.c_str()));
 }
 void MainWindow::clearFields(){
@@ -45,7 +45,7 @@ void MainWindow::calculateCurrentValue(){
     //Converting and Displaying result
     std::ostringstream streamPresentValue;
     streamPresentValue << presentValue;
-    std::string str_presentValue = "The price with sales tax is " + streamPresentValue.str();
+    std::string str_presentValue = "The present value is " + streamPresentValue.str();
     QMessageBox::information(this,tr("Result"), tr(str_presentValue.c_str()));
 }
 MainWindow::~MainWindow()
