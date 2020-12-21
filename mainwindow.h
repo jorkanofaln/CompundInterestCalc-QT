@@ -21,6 +21,7 @@ public slots:
     void calculateFutureValue();
     void clearFields();
     void aboutThisApp();
+    void aboutLicense();
 private:
     Ui::MainWindow *ui;
 };

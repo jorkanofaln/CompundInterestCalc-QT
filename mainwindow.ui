@@ -136,6 +136,7 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionLicense_Information"/>
     <addaction name="actionAbout_this_app"/>
    </widget>
    <addaction name="menuFile"/>
@@ -155,6 +156,11 @@
   <action name="actionReset">
    <property name="text">
     <string>Reset</string>
+   </property>
+  </action>
+  <action name="actionLicense_Information">
+   <property name="text">
+    <string>License Information</string>
    </property>
   </action>
  </widget>
@@ -240,11 +246,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionLicense_Information</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>aboutLicense()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>127</x>
+     <y>167</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>calculateFutureValue()</slot>
   <slot>calculateCurrentValue()</slot>
   <slot>aboutThisApp()</slot>
   <slot>clearFields()</slot>
+  <slot>aboutLicense()</slot>
  </slots>
 </ui>
