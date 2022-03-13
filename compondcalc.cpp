@@ -5,11 +5,13 @@ CompondCalc::CompondCalc(double p_interest,double p_value, double p_time):m_inte
 }
 double CompondCalc::calculateFutureValue(){
     double futureValue;
-    futureValue = m_value * pow((1+m_interest),m_time);
+    double interest = m_interest / 100;
+    futureValue = m_value * pow((1+interest),m_time);
     return futureValue;
 }
 double CompondCalc::calculatePresentValue(){
     double presentValue;
-    presentValue = m_value / pow((1+m_interest),m_time);
+    double interest = m_interest / 100;
+    presentValue = m_value / pow((1+interest),m_time);
     return presentValue;
 }
