@@ -11,17 +11,24 @@ void MainWindow::calculateFutureValue(){
     double amount;
     double time;
     double interest;
-    amount = std::stod(ui->lineEditAmount->text().toStdString());
-    time = std::stod(ui->lineEditTime->text().toStdString());
-    interest = std::stod(ui->lineEditInterest->text().toStdString());
-    //Initializing compound calculator
-    CompondCalc compound(interest,amount,time);
-    double futureValue = compound.calculateFutureValue();
-    //Converting and Displaying result
-    std::ostringstream streamFutureValue;
-    streamFutureValue << futureValue;
-    std::string str_futureValue = "The future value is " + streamFutureValue.str();
-    QMessageBox::information(this,tr("Result"), tr(str_futureValue.c_str()));
+    //Validating parameters
+    bool validFields = this->validateFields(ui->lineEditAmount->text().toStdString(),ui->lineEditTime->text().toStdString(),ui->lineEditInterest->text().toStdString());
+    if(validFields){
+        //Initializing compound calculator
+        amount = std::stod(ui->lineEditAmount->text().toStdString());
+        time = std::stod(ui->lineEditTime->text().toStdString());
+        interest = std::stod(ui->lineEditInterest->text().toStdString());
+        CompondCalc compound(interest,amount,time);
+        double futureValue = compound.calculateFutureValue();
+        //Converting and Displaying result
+        std::ostringstream streamFutureValue;
+        streamFutureValue << futureValue;
+        std::string str_futureValue = "The future value is " + streamFutureValue.str();
+        QMessageBox::information(this,tr("Result"), tr(str_futureValue.c_str()));
+    }
+    else{
+        QMessageBox::about(this,"Warning","Please insert float point numbers");
+    }
 }
 void MainWindow::clearFields(){
     //Clear input fields
@@ -66,21 +73,49 @@ void MainWindow::aboutLicense(){
 
 );
 }
+bool MainWindow::validateFields(std::string strAmount,std::string strTime, std::string strInterest){
+    bool isValid = true;
+    if(!this->validateStringNum(strAmount) || strAmount.empty()){
+        isValid = false;
+    }
+    else if(!this->validateStringNum(strTime) || strTime.empty()){
+        isValid = false;
+    }
+    else if(!this->validateStringNum(strInterest) || strTime.empty()){
+        isValid = false;
+    }
+    return isValid;
+}
+
+bool MainWindow::validateStringNum(std::string value){
+    bool isStrNum;
+    isStrNum = std::ranges::all_of(value.begin(), value.end(),
+                      [](char c){ return isdigit(c) != 0; });
+    return isStrNum;
+}
 void MainWindow::calculateCurrentValue(){
     double amount;
     double time;
     double interest;
-    amount = std::stod(ui->lineEditAmount->text().toStdString());
-    time = std::stod(ui->lineEditTime->text().toStdString());
-    interest = std::stod(ui->lineEditInterest->text().toStdString());
-    //Initializing compound calculator
-    CompondCalc compound(interest,amount,time);
-    double presentValue = compound.calculatePresentValue();
-    //Converting and Displaying result
-    std::ostringstream streamPresentValue;
-    streamPresentValue << presentValue;
-    std::string str_presentValue = "The present value is " + streamPresentValue.str();
-    QMessageBox::information(this,tr("Result"), tr(str_presentValue.c_str()));
+    //Validating parameters
+    bool validFields = this->validateFields(ui->lineEditAmount->text().toStdString(),ui->lineEditTime->text().toStdString(),ui->lineEditInterest->text().toStdString());
+    if(validFields){
+        amount = std::stod(ui->lineEditAmount->text().toStdString());
+        time = std::stod(ui->lineEditTime->text().toStdString());
+        interest = std::stod(ui->lineEditInterest->text().toStdString());
+        //Initializing compound calculator
+        CompondCalc compound(interest,amount,time);
+        double presentValue = compound.calculatePresentValue();
+        //Converting and Displaying result
+        std::ostringstream streamPresentValue;
+        streamPresentValue << presentValue;
+        std::string str_presentValue = "The present value is " + streamPresentValue.str();
+        QMessageBox::information(this,tr("Result"), tr(str_presentValue.c_str()));
+    }
+    else{
+         QMessageBox::about(this,"Warning","Please insert float point numbers");
+    }
+
 }
 MainWindow::~MainWindow()
 {

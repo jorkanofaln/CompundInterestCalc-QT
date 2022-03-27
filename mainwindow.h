@@ -22,6 +22,8 @@ public slots:
     void clearFields();
     void aboutThisApp();
     void aboutLicense();
+    bool validateStringNum(std::string value);
+    bool validateFields(std::string strAmount,std::string strTime, std::string strInterest);
 private:
     Ui::MainWindow *ui;
 };
